@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Form.master.cs" Inherits="Form" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>KwikServe</title>
+    <!-- Facebook Pixel Code -->
+    <script src="../../js/facebook.js"></script>
+    <!-- End Facebook Pixel Code -->
+    <link rel="shortcut icon" type="image/x-icon" href="Images/ic_logo.png" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/w3.css" rel="stylesheet" />
+    <script src="../../js/forms.js"></script>
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <link href="css/forms.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <div>
+        <dx:ASPxLoadingPanel ID="lpForm" runat="server" ClientInstanceName="lpForm" Font-Bold="True" ForeColor="Blue" ImagePosition="Bottom" Modal="True" Text="Please Wait...">
+            <Border BorderStyle="None" />
+        </dx:ASPxLoadingPanel>
+    </div>
+    </form>
+    <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=256423902084344&ev=PageView&noscript=1"
+/></noscript>
+</body>
+</html>

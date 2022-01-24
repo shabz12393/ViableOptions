@@ -1,0 +1,91 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<%@ Register Assembly="DevExpress.Web.Bootstrap.v19.1, Version=19.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.Bootstrap" TagPrefix="dx" %>
+
+
+<%@ Register Assembly="DevExpress.Web.v19.1" Namespace="DevExpress.Web" TagPrefix="dx" %>
+<%@ Register Src="~/WebControls/Settings/Password.ascx" TagPrefix="uc1" TagName="Password" %>
+<%@ Register Src="~/WebControls/Settings/User.ascx" TagPrefix="uc1" TagName="User" %>
+<%@ Register Src="~/WebControls/Site/FooterControl.ascx" TagPrefix="uc1" TagName="FooterControl" %>
+<%@ Register Src="~/WebControls/Site/HeaderControl.ascx" TagPrefix="uc1" TagName="HeaderControl" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1" runat="server">
+    <title>viable options</title>
+    <link rel="shortcut icon" type="image/x-icon" href="Images/ic_logo.png" />
+    <script type="text/javascript" src="../js/scripts.js"></script>
+    <link rel="stylesheet" href="css/Master.css" />
+    <link href="css/w3.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <dx:ASPxCallbackPanel ID="cpMain" runat="server" ClientInstanceName="cpMain" OnCallback="cpMain_Callback" Width="100%">
+                <panelcollection>
+                <dx:PanelContent runat="server">
+                     <!-- header -->
+                    <uc1:HeaderControl runat="server" ID="HeaderControl" />
+
+                     <!-- Content -->
+                    <div class="w3-container" style="margin-top:50px">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+
+                     <!-- Footer -->
+                    <uc1:FooterControl runat="server" ID="FooterControl" />
+
+                </dx:PanelContent>
+            </panelcollection>
+            </dx:ASPxCallbackPanel>
+        </div>
+        <div>
+
+            <dx:ASPxPopupControl ID="pcAccount" runat="server" ClientInstanceName="pcAccount" ShowHeader="False" Width="100%">
+                <contentcollection>
+<dx:PopupControlContentControl runat="server">
+    <uc1:User ID="User" runat="server" />
+                    </dx:PopupControlContentControl>
+</contentcollection>
+            </dx:ASPxPopupControl>
+
+        </div>
+
+        <div>
+            <dx:ASPxCallbackPanel ID="cpChange" runat="server" ClientInstanceName="cpChange" OnCallback="cpChange_Callback" Width="100%">
+                <panelcollection>
+                <dx:PanelContent runat="server">
+                    <dx:ASPxPopupControl ID="pcPassword" runat="server" ClientInstanceName="pcPassword" Modal="True" PopupHorizontalAlign="WindowCenter" PopupVerticalAlign="WindowCenter" ShowHeader="False" Theme="PlasticBlue">
+                        <ContentCollection>
+                            <dx:PopupControlContentControl runat="server">
+                                <uc1:Password ID="Password" runat="server" />
+                            </dx:PopupControlContentControl>
+                        </ContentCollection>
+                    </dx:ASPxPopupControl>
+                </dx:PanelContent>
+            </panelcollection>
+            </dx:ASPxCallbackPanel>
+        </div>
+        <div>
+            <div> 
+    <dx:ASPxLoadingPanel ID="lpForm" runat="server" ClientInstanceName="lpForm" Font-Bold="True" 
+        ForeColor="Orange" ImagePosition="Bottom" Modal="True" Text="Please Wait...">
+        <Border BorderStyle="None" />
+    </dx:ASPxLoadingPanel>
+</div>
+        </div>
+    </form>
+
+</body>
+</html>
+

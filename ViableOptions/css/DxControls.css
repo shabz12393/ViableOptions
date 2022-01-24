@@ -1,0 +1,66 @@
+﻿.dxeRoot_MetropolisBlue {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.dxpnlControl_MetropolisBlue, .dxeHelpText_MetropolisBlue {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif !important;
+    font-size: 13px !important;
+}
+
+.dxis-nbSelectedItem {
+    display: none;
+}
+
+.dxm-menuItem {
+    height: 30px;
+}
+
+.dxrpControl_MetropolisBlue {  
+       border: none !important;  
+ }
+.dxeRadioButtonList_MetropolisBlue, .dxeCheckBoxList_MetropolisBlue {
+   border: none !important;  
+}
+
+.dxm-main {
+    position: fixed;
+    top: 50px; 
+    z-index: 1030;
+}
+
+.dxdvItem_MaterialCompact{
+    margin:10px !important;
+}
+
+/* ASPxImageSlider styles */
+
+.dxisControl .dxis-nbDotItem {
+    width: 50px;
+    height: 5px;
+    background-color: #fff;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=45);
+    opacity: 0.45;
+}
+
+.dxisControl .dxis-nbDotItemSelected {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Style=0, Opacity=100) !important;
+    opacity: 1 !important;
+}
+
+.dxisControl .dxis-nbDotsBottom {
+    margin-top: -75px;
+}
+
+.dxflGroupBoxCaption_MaterialCompact{
+    color: #222;
+    font-size: 16px;
+}
+
+.dxflGroupBox_MaterialCompact {
+    border-color: #222;
+}
+
+td.dxeHelpText_MaterialCompact, .control-label {
+    color: #222;
+}

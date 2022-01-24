@@ -1,0 +1,39 @@
+﻿* {
+    font-family:  'Montserrat' Verdana, Geneva, Tahoma, sans-serif !important;
+    font-size: small !important;
+}
+
+.style {
+    width: 100%;
+}
+
+.centered
+{
+    margin: 0 auto;
+    float: none !important;
+    display: table;
+    margin-top:50px;
+}
+
+.wrapper .dxpnlControl_Metropolis{
+      display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+}
+.wrapper .dxpnlControl_Metropolis .dxeTextBox_Metropolis{
+   display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+}
+
+/*body {
+    background: url("/Images/background.png");
+}*/
+.center { margin: 0 auto;
+    float: none !important;
+    display: table;
+}
+/*disable aspxcombobox headers*/
+.dxeHC, .dxeHFC, .dxeHLC, .dxeHMIC {
+    display:none;
+}

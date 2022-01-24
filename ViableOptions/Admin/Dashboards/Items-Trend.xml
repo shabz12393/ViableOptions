@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard CurrencyCulture="en-US">
+  <Title Text="A chart showing item trend per month" />
+  <DataSources>
+    <SqlDataSource Name="ItemTrend" ComponentName="dashboardSqlDataSource2">
+      <Connection Name="viableOptionsConnectionString" FromAppConfig="true" />
+      <Query Type="StoredProcQuery" Name="getMonthlyItemTrend">
+        <Parameter Name="@from" Type="DevExpress.DataAccess.Expression">(System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)(?Start)</Parameter>
+        <Parameter Name="@to" Type="DevExpress.DataAccess.Expression">(System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)(?End)</Parameter>
+        <ProcName>getMonthlyItemTrend</ProcName>
+      </Query>
+      <ResultSchema>
+        <DataSet Name="ItemTrend">
+          <View Name="getMonthlyItemTrend">
+            <Field Name="Serial" Type="Int32" />
+            <Field Name="item" Type="String" />
+            <Field Name="Month" Type="Int32" />
+            <Field Name="Year" Type="Int32" />
+            <Field Name="Total amount" Type="Int32" />
+          </View>
+        </DataSet>
+      </ResultSchema>
+      <ConnectionOptions CloseConnection="true" />
+    </SqlDataSource>
+  </DataSources>
+  <Parameters>
+    <Parameter Name="Start" Type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Value="2019" />
+    <Parameter Name="End" Type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Value="2019" />
+  </Parameters>
+  <Items>
+    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" ShowCaption="false" DataSource="dashboardSqlDataSource2" DataMember="getMonthlyItemTrend">
+      <DataItems>
+        <Dimension DataMember="Month" SortByMeasure="DataItem3" DefaultId="DataItem1" />
+        <Dimension DataMember="Year" DefaultId="DataItem2" />
+        <Measure DataMember="Serial" Name="Serial " SummaryType="Count" DefaultId="DataItem3" />
+        <Dimension DataMember="item" DefaultId="DataItem4" />
+        <Measure DataMember="Total amount" Name="Amount" DefaultId="DataItem0">
+          <NumericFormat FormatType="Number" Precision="0" Unit="Ones" IncludeGroupSeparator="true" />
+        </Measure>
+      </DataItems>
+      <HiddenMeasures>
+        <Measure DefaultId="DataItem3" />
+      </HiddenMeasures>
+      <SeriesDimensions>
+        <SeriesDimension DefaultId="DataItem2" />
+        <SeriesDimension DefaultId="DataItem4" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument DefaultId="DataItem1" />
+      </Arguments>
+      <Panes>
+        <Pane Name="Pane 1">
+          <Series>
+            <Simple ShowPointMarkers="true" SeriesType="Area">
+              <Value DefaultId="DataItem0" />
+              <PointLabelOptions ContentType="Argument, Value" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Grid ComponentName="gridDashboardItem1" Name="Grid 1" ShowCaption="false">
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup Orientation="Vertical">
+      <LayoutItem DashboardItem="chartDashboardItem1" Weight="94.904458598726109" />
+      <LayoutItem DashboardItem="gridDashboardItem1" Weight="5.0955414012738851" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

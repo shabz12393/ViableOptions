@@ -4,7 +4,7 @@
     <SettingsLoadingPanel Enabled="false" />
     <ClientSideEvents EndCallback="function(s,e){
         lpForm.Hide();
-        gvPayments.Refresh();
+        location.reload();
         }" />
     <PanelCollection>
         <dx:PanelContent runat="server">

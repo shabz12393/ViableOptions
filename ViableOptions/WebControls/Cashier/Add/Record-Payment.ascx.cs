@@ -38,8 +38,8 @@ public partial class WebControls_Cashier_Add_Record_Payment : System.Web.UI.User
             {
                 if ((deposit + discount) <= balance)
                 {
-                    new PaymentsTableAdapter().addPayment(staff_id, pm_id, deposit, discount, receipt_no, notes, created_dt, booking_id);
-                    cpForm.JSProperties["cpMessage"] = "Payment Recorded!!!";
+                    bool response = CatalogAccess.Add_Payment(staff_id, pm_id, deposit, discount, receipt_no, notes, created_dt, booking_id);
+                    cpForm.JSProperties["cpMessage"] = response ? "Insert successful" : "Insert failed";
                 }
                 else
                 {

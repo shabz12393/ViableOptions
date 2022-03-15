@@ -8,7 +8,7 @@
     <div class="card-header font-weight-bold">
         <h5>Users</h5>
     </div>
-    <div class="card-body">
+    <div class="card-body container">
         <div class="row mb-2">
             <uc1:Users runat="server" ID="Users" />
         </div>

@@ -518,4 +518,191 @@ public static class CatalogAccess
         // execute the stored procedure and return the results
         return GenericDataAccess.ExecuteSelectCommand(comm);
     }
+
+
+    //Add Payment
+    public static bool Add_Payment(int staff_id, int mode_id, int cash, int discount, string receipt_no,
+        string notes, DateTime created_dt, string booking_id)
+    {
+        // get a configured DbCommand object
+        DbCommand comm = GenericDataAccess.CreateCommand();
+        // set the stored procedure name
+        comm.CommandText = "addPayment";
+
+        // create a new parameter
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@staff_id";
+        param.Value = staff_id;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+
+        // create a new parameter (out)
+        param = comm.CreateParameter();
+        param.ParameterName = "@mode_id";
+        param.Value = mode_id;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        // create a new parameter (out)
+        param = comm.CreateParameter();
+        param.ParameterName = "@cash";
+        param.Value = cash;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        // create a new parameter (out)
+        param = comm.CreateParameter();
+        param.ParameterName = "@discount";
+        param.Value = discount;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@receipt_no";
+        param.Value = receipt_no;
+        param.DbType = DbType.String;
+        param.Size = 50;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@notes";
+        param.Value = notes;
+        param.DbType = DbType.String;
+        param.Size = 250;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@created_dt";
+        param.Value = created_dt;
+        param.DbType = DbType.DateTime;
+        comm.Parameters.Add(param);
+
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@booking_id";
+        param.Value = booking_id;
+        param.DbType = DbType.String;
+        param.Size = 50;
+        comm.Parameters.Add(param);
+
+        return Comm_Result(comm);
+
+    }
+
+    //Add Customer
+    public static bool AddCustomer(string full_name, string telephone, string email, string gender, string notes)
+    {
+        // get a configured DbCommand object
+        DbCommand comm = GenericDataAccess.CreateCommand();
+        // set the stored procedure name
+        comm.CommandText = "addCustomer";
+
+        // create a new parameter
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@full_name";
+        param.Value = full_name;
+        param.Size = 100;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+
+
+        // create a new parameter (out)
+        param = comm.CreateParameter();
+        param.ParameterName = "@telephone";
+        param.Value = telephone;
+        param.DbType = DbType.String;
+        param.Size = 20;
+        comm.Parameters.Add(param);
+
+
+        // create a new parameter (out)
+        param = comm.CreateParameter();
+        param.ParameterName = "@email";
+        param.Value = email;
+        param.DbType = DbType.String;
+        param.Size = 50;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@gender";
+        param.Value = gender;
+        param.DbType = DbType.String;
+        param.Size = 10;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@notes";
+        param.Value = notes;
+        param.DbType = DbType.String;
+        param.Size = 250;
+        comm.Parameters.Add(param);
+
+        return Comm_Result(comm);
+
+    }
+    //Update Account
+    public static bool UpdateAcount(int user_id, string user_name, string password, int role_id, int account_id)
+    {
+        // get a configured DbCommand object
+        DbCommand comm = GenericDataAccess.CreateCommand();
+        // set the stored procedure name
+        comm.CommandText = "UpdateUserAccount";
+
+        // create a new parameter
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@user_id";
+        param.Value = user_id;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+
+        // create a new parameter (out)
+        param = comm.CreateParameter();
+        param.ParameterName = "@user_name";
+        param.Value = user_name;
+        param.DbType = DbType.String;
+        param.Size = 50;
+        comm.Parameters.Add(param);
+
+
+        // create a new parameter (out)
+        param = comm.CreateParameter();
+        param.ParameterName = "@user_pwd";
+        param.Value = password;
+        param.DbType = DbType.String;
+        param.Size = 250;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@role_id";
+        param.Value = role_id;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        param = comm.CreateParameter();
+        param.ParameterName = "@account_id";
+        param.Value = account_id;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+
+        return Comm_Result(comm);
+
+    }
+    public static bool Comm_Result(DbCommand comm)
+    {
+        /// result will represent the number of changed rows
+        int result = -1;
+        try
+        {
+            // execute the stored procedure
+            result = GenericDataAccess.ExecuteNonQuery(comm);
+        }
+        catch
+        {
+            // any errors are logged in GenericDataAccess, we ignore them here
+        }
+        // result will be 1 in case of success
+        return (result != -1);
+    }
 }

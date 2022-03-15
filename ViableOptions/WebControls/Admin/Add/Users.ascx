@@ -56,11 +56,11 @@
                         <FocusedStyle Border-BorderColor="Orange">
                         </FocusedStyle>
                     </dx:ASPxTextBox>
-                    <div>
-                        <asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="tbPassword"
-                            ControlToValidate="tbConfirmPassword" ErrorMessage="Password don't match" ForeColor="Red">
-                        </asp:CompareValidator>
-                    </div>
+            <div>
+                <asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="tbPassword"
+                    ControlToValidate="tbConfirmPassword" ErrorMessage="Password don't match" ForeColor="Red">
+                </asp:CompareValidator>
+            </div>
                 </div>
                 <div class="col">
                     <dx:ASPxTextBox ID="tbConfirmPassword" runat="server" Font-Bold="False" Height="40px" HelpText="Confirm Password"
@@ -77,6 +77,7 @@
                     </dx:ASPxTextBox>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col">
                     <dx:ASPxComboBox ID="cbRoles" runat="server" DataSourceID="odsRoles" Font-Bold="False" Height="40px"
@@ -97,7 +98,7 @@
                         </FocusedStyle>
                     </dx:ASPxComboBox>
                 </div>
-                <div class="col mt-2">
+                <div class="col mt-4">
                     <dx:ASPxButton ID="btnSubmit" runat="server" AutoPostBack="False" Font-Bold="True" Height="40px"
                         Text="Save" Width="50%">
                         <ClientSideEvents Click="onSubmit" />

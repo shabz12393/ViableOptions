@@ -29,9 +29,9 @@ public partial class WebControls_Admin_Customers: System.Web.UI.UserControl
             string email = (string)e.NewValues["email"];
             string gender = (string)e.NewValues["gender"];
             string notes = (string)e.NewValues["notes"];
-            customerAdapter.addCustomer(full_name, telephone, email, gender, notes);
+            bool response = CatalogAccess.AddCustomer(full_name, telephone, email, gender, notes);
 
-            gv.JSProperties["cpMessage"] = "Customer Added!!!";
+            gv.JSProperties["cpMessage"] = response ? "Insert successful" : "Insert failed";
         }
         catch (Exception ex)
         {

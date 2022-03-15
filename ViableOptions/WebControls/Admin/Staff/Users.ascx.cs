@@ -71,13 +71,14 @@ public partial class WebControls_Admin_Staff_Users_Users : System.Web.UI.UserCon
 
             string action_by = myCookies.Cookies.getUserName();
 
-            new AccountsTableAdapter().Update(userId, userName, userPassword, roleId, account_id);
+            bool response = CatalogAccess.UpdateAcount(userId, userName, userPassword, roleId, account_id);
 
             Utils.logAudit(action, table, details, action_by);
 
-            gv.JSProperties["cpMessage"] = "User Updated";
+            gv.JSProperties["cpMessage"] = response ? "Update successful" : "Update failed";
+
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             gv.JSProperties["cpMessage"] = "Error";
             Utils.logError(ex);
